@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+
+# env files - never commit real secrets
+.env
+.env.local
+
+# build outputs
+dist/
+build/
+artifacts/
+cache/
+typechain/
+typechain-types/
+
+# misc
+*.log
+.DS_Store
+compiled_abi.json

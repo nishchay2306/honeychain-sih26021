@@ -1,0 +1,280 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      }
+    ],
+    "name": "BatchDoesNotExist",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum HoneyChain.Stage",
+        "name": "current",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum HoneyChain.Stage",
+        "name": "attempted",
+        "type": "uint8"
+      }
+    ],
+    "name": "InvalidStageTransition",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "beekeeper",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "floralSource",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "harvestTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "BatchRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "labReportHash",
+        "type": "string"
+      }
+    ],
+    "name": "LabReportAttached",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum HoneyChain.Stage",
+        "name": "newStage",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "updatedBy",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "StageAdvanced",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "enum HoneyChain.Stage",
+        "name": "newStage",
+        "type": "uint8"
+      }
+    ],
+    "name": "advanceStage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "labReportHash",
+        "type": "string"
+      }
+    ],
+    "name": "attachLabReport",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBatch",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "beekeeper",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "floralSource",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "harvestLocation",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "harvestTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "labReportHash",
+            "type": "string"
+          },
+          {
+            "internalType": "enum HoneyChain.Stage",
+            "name": "currentStage",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct HoneyChain.Batch",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBatchHistory",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum HoneyChain.Stage",
+            "name": "stage",
+            "type": "uint8"
+          },
+          {
+            "internalType": "address",
+            "name": "updatedBy",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct HoneyChain.StageUpdate[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "floralSource",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "harvestLocation",
+        "type": "string"
+      }
+    ],
+    "name": "registerBatch",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "batchId",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalBatches",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

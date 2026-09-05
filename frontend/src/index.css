@@ -1,0 +1,7 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, "Segoe UI", sans-serif;
+  background: #fff;
+  color: #222;
+}

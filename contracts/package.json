@@ -1,0 +1,24 @@
+{
+  "name": "honeychain-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:amoy": "hardhat run scripts/deploy.js --network amoy",
+    "verify:amoy": "hardhat verify --network amoy",
+    "verify:access-control": "node verify_access_control.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.6.1",
+    "dotenv": "^17.4.2",
+    "hardhat": "^2.29.1",
+    "solc": "^0.8.24",
+    "ganache": "^7.9.2"
+  }
+}
